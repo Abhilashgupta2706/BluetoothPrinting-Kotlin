@@ -58,6 +58,15 @@ class MainActivity : AppCompatActivity() {
                     var state = etState.text.toString()
                     var country = etCountry.text.toString()
 
+                    if (fullName.isEmpty() || contactNum.isEmpty() || city.isEmpty() || state.isEmpty() || country.isEmpty()) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "All fields should be filled",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@setOnClickListener
+                    }
+
                     printSomePrintable(fullName, contactNum, city, state, country)
                 }
             }
@@ -141,7 +150,7 @@ class MainActivity : AppCompatActivity() {
             .setFontSize(DefaultPrinter.FONT_SIZE_NORMAL)
             .setUnderlined(DefaultPrinter.UNDERLINED_MODE_ON) // Underline on/off
             .setCharacterCode(DefaultPrinter.CHARCODE_PC437) // Character code to support languages
-            .setLineSpacing(DefaultPrinter.LINE_SPACING_60)
+            .setLineSpacing(DefaultPrinter.LINE_SPACING_30)
             .setNewLinesAfter(0) // To provide n lines after sentence
             .build()
         printables.add(printable)
